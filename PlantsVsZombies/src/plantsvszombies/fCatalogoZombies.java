@@ -5,35 +5,25 @@
  */
 package plantsvszombies;
 
-import Clases.Planta;
-import java.net.URL;
+import Clases.Zombie;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 /**
  *
  * @author Adrian
  */
-public class fCatalogoPlantas extends javax.swing.JFrame {
+public class fCatalogoZombies extends javax.swing.JFrame {
 
-    Planta planta = null;
-    
-    public fCatalogoPlantas() {
+    Zombie zombie = null;
+    public fCatalogoZombies() {
         initComponents();
-        spCatalogo.setLayout(null);
-        
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/Imagenes/planta1.png"));
+        ImageIcon imagen = new ImageIcon(zombie.getImagen());
         JLabel p = new JLabel(imagen);
-        p.setBounds(50,50,52,89);
-        p.setText("adfasdfa");
+        p.setBounds(0,0,52,89);
         spCatalogo.add(p);
-        
-        URL url = getClass().getResource("/Imagenes/icon.png");
-        ImageIcon icono = new ImageIcon(url);
-        setIconImage(icono.getImage());
     }
 
     /**
@@ -62,7 +52,6 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Catalogo Plantas");
         getContentPane().setLayout(null);
 
         spCatalogo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -141,17 +130,16 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(160, 0, 600, 600);
 
-        setSize(new java.awt.Dimension(774, 488));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
         Iterator i = fPrincipal.catalogoPlantas.iterator();
         while (i.hasNext())
         {
-            Planta t = (Planta) i.next();
+            Zombie t = (Zombie) i.next();
             System.out.println("Imagen: " + t.getImagen() + "\nNombre: " + t.getNombre() + "\nVida: "
-                    + t.getVida() + "\nAtaque: " + t.getAtaque() + "\nTipo de Ataque: " + t.getAtaque());
+                + t.getVida() + "\nAtaque: " + t.getAtaque() + "\nTipo de Ataque: " + t.getAtaque());
         }
     }//GEN-LAST:event_bFinalizarActionPerformed
 
@@ -162,12 +150,8 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
     }//GEN-LAST:event_bExtraActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        planta = new Planta(tfImagen.getText(), tfNombre.getText(), (int) sAP.getValue(), (int) sHP.getValue(), cbTipo.toString());
-        fPrincipal.catalogoPlantas.add(planta);
-        ImageIcon imagen = new ImageIcon(planta.getImagen());
-        JLabel p = new JLabel(imagen);
-        p.setBounds(0,0,52,89);
-        spCatalogo.add(p);
+        zombie = new Zombie(tfImagen.getText(), tfNombre.getText(), (int) sAP.getValue(), (int) sHP.getValue(), cbTipo.toString());
+        fPrincipal.catalogoZombies.add(zombie);
     }//GEN-LAST:event_bGuardarActionPerformed
 
     /**
@@ -187,20 +171,20 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fCatalogoPlantas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fCatalogoZombies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fCatalogoPlantas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fCatalogoZombies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fCatalogoPlantas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fCatalogoZombies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fCatalogoPlantas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fCatalogoZombies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fCatalogoPlantas().setVisible(true);
+                new fCatalogoZombies().setVisible(true);
             }
         });
     }

@@ -53,10 +53,13 @@ public class fEscenario extends javax.swing.JFrame {
                 }
                 imagen = new ImageIcon(url);
                 JLabel grama = new JLabel(imagen);
-                grama.setBounds(tamx * i, tamy * j, 52, 89);
+                grama.setBounds(tamx * i, tamy * j, 52, 52);
                 pTablero.add(grama);
             }
         }
+        url = getClass().getResource("/Imagenes/icon.png");
+        ImageIcon icono = new ImageIcon(url);
+        setIconImage(icono.getImage());
     }
 
     /**

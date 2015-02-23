@@ -5,7 +5,11 @@
  */
 package plantsvszombies;
 
+import Clases.Campo;
+import java.awt.List;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,7 +18,9 @@ import javax.swing.ImageIcon;
  */
 public class fJugadores extends javax.swing.JFrame {
 
-    String tipo;
+    private String tipo;
+    public LinkedList<Campo> jplanta = new LinkedList<Campo>();
+    public LinkedList<Campo> jzombie = new LinkedList<Campo>();
     public fJugadores(String tipo) {
         this.tipo = tipo;
         initComponents();
@@ -24,6 +30,7 @@ public class fJugadores extends javax.swing.JFrame {
         URL url = getClass().getResource("/Imagenes/icon.png");
         ImageIcon icono = new ImageIcon(url);
         setIconImage(icono.getImage());
+        
     }
 
     /**
@@ -41,7 +48,7 @@ public class fJugadores extends javax.swing.JFrame {
         tfCantidad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfExtra = new javax.swing.JTextField();
-        bFinalizar1 = new javax.swing.JButton();
+        bExtra = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -49,6 +56,11 @@ public class fJugadores extends javax.swing.JFrame {
 
         bFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/finalizar.png"))); // NOI18N
         bFinalizar.setContentAreaFilled(false);
+        bFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFinalizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 150, 30));
         getContentPane().add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 128, -1));
 
@@ -60,9 +72,14 @@ public class fJugadores extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
         getContentPane().add(tfExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 128, -1));
 
-        bFinalizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar.png"))); // NOI18N
-        bFinalizar1.setContentAreaFilled(false);
-        getContentPane().add(bFinalizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 30, 30));
+        bExtra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar.png"))); // NOI18N
+        bExtra.setContentAreaFilled(false);
+        bExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bExtraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 30, 30));
 
         jLabel4.setText("Nombre");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
@@ -73,6 +90,76 @@ public class fJugadores extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(386, 408));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExtraActionPerformed
+        Campo campo = new Campo("extra",tfExtra.getText());
+        if(tipo.equals("plantas"))
+        {
+            jplanta.add(campo);
+        }
+        else
+        {
+            jzombie.add(campo);
+        }
+    }//GEN-LAST:event_bExtraActionPerformed
+
+    private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
+        // TODO add your handling code here:
+        Campo campo1 = new Campo("nombre",tfNombre.getText());
+        try
+        {
+            int x = Integer.parseInt(tfCantidad.getText());
+            Campo campo2 = new Campo("cantidad",tfCantidad.getText());
+            if(tipo.equals("plantas"))
+            {
+                jplanta.add(campo1);
+                jplanta.add(campo2);
+                fPrincipal.Jugadores.add(jplanta);
+            }
+            else
+            {
+                jzombie.add(campo1);
+                jzombie.add(campo2);
+                fPrincipal.Jugadores.add(jzombie);
+            }
+            /*
+            RECORRE LA LISTA DE JUGADORES
+            */
+            Iterator i = fPrincipal.Jugadores.iterator();
+            while(i.hasNext())
+            {
+                LinkedList<LinkedList> temp = (LinkedList<LinkedList>) i.next();
+                Iterator it = temp.iterator();
+                System.out.println("lista");
+                while(it.hasNext())
+                {
+                    /*
+                    RECORRE LA LISTA DEL JUGADOR PLANTA
+                    */
+                    Campo t = null;
+                    if(tipo.equals("plantas"))
+                    {
+                        t = (Campo) it.next();
+                        System.out.println("plantas");
+                        System.out.println(t.getTipo() + ": " + t.getAtributo());   
+                    }
+                    /*
+                    RECORRE LA LISTA DEL JUGADOR ZOMBIE
+                    */
+                    else
+                    {
+                        t = (Campo) it.next();
+                        System.out.println("zombies");
+                        System.out.println(t.getTipo() + ": " + t.getAtributo());
+                    }
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("La cantidad no es un numero");
+        }
+    }//GEN-LAST:event_bFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,8 +198,8 @@ public class fJugadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bExtra;
     private javax.swing.JButton bFinalizar;
-    private javax.swing.JButton bFinalizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
