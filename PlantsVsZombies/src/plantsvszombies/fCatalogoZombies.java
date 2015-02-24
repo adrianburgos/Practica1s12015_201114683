@@ -5,7 +5,9 @@
  */
 package plantsvszombies;
 
+import Clases.Planta;
 import Clases.Zombie;
+import java.net.URL;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -18,12 +20,17 @@ import javax.swing.JLabel;
 public class fCatalogoZombies extends javax.swing.JFrame {
 
     Zombie zombie = null;
+    int tamx = 52;
+    int tamy = 89;
+    int cant = 0;
+    
     public fCatalogoZombies() {
         initComponents();
-        ImageIcon imagen = new ImageIcon(zombie.getImagen());
-        JLabel p = new JLabel(imagen);
-        p.setBounds(0,0,52,89);
-        spCatalogo.add(p);
+        spCatalogo.setLayout(null);
+        
+        URL url = getClass().getResource("/Imagenes/icon.png");
+        ImageIcon icono = new ImageIcon(url);
+        setIconImage(icono.getImage());
     }
 
     /**
@@ -52,6 +59,7 @@ public class fCatalogoZombies extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Catalogo Zombies");
         getContentPane().setLayout(null);
 
         spCatalogo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -130,28 +138,68 @@ public class fCatalogoZombies extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(160, 0, 600, 600);
 
-        pack();
+        setSize(new java.awt.Dimension(776, 488));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
-        Iterator i = fPrincipal.catalogoPlantas.iterator();
+        Iterator i = fPrincipal.catalogoZombies.iterator();
         while (i.hasNext())
         {
             Zombie t = (Zombie) i.next();
-            System.out.println("Imagen: " + t.getImagen() + "\nNombre: " + t.getNombre() + "\nVida: "
-                + t.getVida() + "\nAtaque: " + t.getAtaque() + "\nTipo de Ataque: " + t.getAtaque());
+            System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
+                    + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
         }
+        fPrincipal.escenario.setVisible(true);
+        int n = fPrincipal.catalogoPlantas.size();
+        int m = fPrincipal.catalogoZombies.size();
+        for(int j = 0; j<5; j++)
+        {
+            int posP = (int) (Math.random()*100)%n;
+            int posZ = (int) (Math.random()*100)%m;
+            fEscenario.plantas.add(fPrincipal.catalogoPlantas.get(posP));
+            fEscenario.zombies.push(fPrincipal.catalogoZombies.get(posZ));
+            Planta p = fPrincipal.catalogoPlantas.get(posP);
+            Zombie z = fPrincipal.catalogoZombies.get(posZ);
+            JLabel tp = new JLabel(new ImageIcon(p.getImagen()));
+            JLabel tz = new JLabel(new ImageIcon(z.getImagen()));
+            tp.setBounds(10, tamy*j + 10, tamx, tamy);
+            tz.setBounds(10, tamy*j + 10, tamx, tamy);
+            fEscenario.pPlantas.add(tp);
+            fEscenario.pZombies.add(tz);
+            fEscenario.pPlantas.repaint();
+            fEscenario.pZombies.repaint();
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_bFinalizarActionPerformed
 
     private void bExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExtraActionPerformed
-        JFileChooser buscar = new JFileChooser("C:\\Users\\Adrian\\Documents\\GitHub\\Practica1s12015_201114683\\PlantsVsZombies\\src\\Imagenes");
+        JFileChooser buscar = new JFileChooser("C:\\Users\\Adrian\\Documents\\GitHub\\Practica1s12015_201114683\\PlantsVsZombies\\src\\Imagenes\\Zombies");
         buscar.showOpenDialog(null);
         tfImagen.setText(buscar.getSelectedFile().toString());
     }//GEN-LAST:event_bExtraActionPerformed
 
+    void CrearLabel(JLabel label, String texto, int pos)
+    {
+        label = new JLabel(texto);
+        label.setBounds(100 * pos, tamy * cant + 40 , 60, 20);
+        spCatalogo.add(label);
+        spCatalogo.repaint();
+    }
+    
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        zombie = new Zombie(tfImagen.getText(), tfNombre.getText(), (int) sAP.getValue(), (int) sHP.getValue(), cbTipo.toString());
+        zombie = new Zombie(tfImagen.getText(), tfNombre.getText(), (int) sAP.getValue(), (int) sHP.getValue(), cbTipo.getSelectedItem().toString());
         fPrincipal.catalogoZombies.add(zombie);
+        ImageIcon imagen = new ImageIcon(zombie.getImagen());
+        JLabel p = new JLabel(imagen);
+        p.setBounds(10,tamy*cant + 10,52,89);
+        spCatalogo.add(p);
+        spCatalogo.repaint();
+        CrearLabel(p, zombie.getNombre(), 1);
+        CrearLabel(p, Integer.toString(zombie.getVida()), 2);
+        CrearLabel(p, Integer.toString(zombie.getAtaque()), 3);
+        CrearLabel(p, zombie.getTipo(), 4);
+        cant++;
     }//GEN-LAST:event_bGuardarActionPerformed
 
     /**

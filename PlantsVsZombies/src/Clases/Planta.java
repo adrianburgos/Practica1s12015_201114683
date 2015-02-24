@@ -5,18 +5,21 @@
  */
 package Clases;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Adrian
  */
-public class Planta {
+public class Planta extends JLabel implements Runnable {
     private String imagen;
     private String nombre;
     private int ataque;
     private int vida;
     private String tipo;
-    private int x = 0;
-    private int y = 0;
+    private String lugar;
 
     public Planta(String imagen, String nombre, int ataque, int vida, String tipo) {
         this.imagen = imagen;
@@ -25,6 +28,12 @@ public class Planta {
         this.vida = vida;
         this.tipo = tipo;
     }
+
+    public Planta(ImageIcon image) {
+        this.setIcon(image);
+    }
+    
+    
 
     public String getImagen() {
         return imagen;
@@ -65,22 +74,18 @@ public class Planta {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    public int getX() {
-        return x;
+    
+    @Override
+    public void run() {
+        if(lugar.equals("barra"))
+        {
+            
+        }
+        if(lugar.equals("tablero"))
+        {
+            
+        }
     }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }  
     
     
 }

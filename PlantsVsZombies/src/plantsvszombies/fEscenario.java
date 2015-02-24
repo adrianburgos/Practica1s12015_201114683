@@ -5,16 +5,22 @@
  */
 package plantsvszombies;
 
+import Clases.Cola;
+import Clases.Planta;
+import Clases.Zombie;
 import java.net.URL;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+import java.util.Stack;
 /**
  *
  * @author Adrian
  */
-public class fEscenario extends javax.swing.JFrame {
+public class fEscenario extends javax.swing.JFrame{
     int x,y;
+    public static LinkedList<Planta> plantas = new LinkedList<Planta>();;
+    public static Stack<Zombie> zombies = new Stack<Zombie>();
     public fEscenario(int x, int y) {
         initComponents();
         this.x = x;
@@ -71,28 +77,28 @@ public class fEscenario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pPlantas = new javax.swing.JPanel();
         pTablero = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        pZombies = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+        pPlantas.setBorder(new javax.swing.border.MatteBorder(null));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pPlantasLayout = new javax.swing.GroupLayout(pPlantas);
+        pPlantas.setLayout(pPlantasLayout);
+        pPlantasLayout.setHorizontalGroup(
+            pPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pPlantasLayout.setVerticalGroup(
+            pPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 538, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 10, 102, 540);
+        getContentPane().add(pPlantas);
+        pPlantas.setBounds(10, 10, 102, 540);
 
         pTablero.setBorder(new javax.swing.border.MatteBorder(null));
         pTablero.setToolTipText("");
@@ -102,21 +108,21 @@ public class fEscenario extends javax.swing.JFrame {
         getContentPane().add(pTablero);
         pTablero.setBounds(120, 10, 520, 540);
 
-        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+        pZombies.setBorder(new javax.swing.border.MatteBorder(null));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pZombiesLayout = new javax.swing.GroupLayout(pZombies);
+        pZombies.setLayout(pZombiesLayout);
+        pZombiesLayout.setHorizontalGroup(
+            pZombiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pZombiesLayout.setVerticalGroup(
+            pZombiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 538, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(650, 10, 102, 540);
+        getContentPane().add(pZombies);
+        pZombies.setBounds(650, 10, 102, 540);
 
         setSize(new java.awt.Dimension(784, 597));
         setLocationRelativeTo(null);
@@ -157,8 +163,8 @@ public class fEscenario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel pTablero;
+    public static javax.swing.JPanel pPlantas;
+    public static javax.swing.JPanel pTablero;
+    public static javax.swing.JPanel pZombies;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,6 +24,7 @@ public class fPrincipal extends javax.swing.JFrame {
     public static LinkedList<LinkedList> Jugadores = new LinkedList<LinkedList>();
     public static LinkedList<Planta> catalogoPlantas = new LinkedList<Planta>();
     public static LinkedList<Zombie> catalogoZombies = new LinkedList<Zombie>();
+    public static fEscenario escenario = null;
     public fPrincipal() {
         initComponents();
         //setLocationRelativeTo(null);
@@ -59,7 +60,7 @@ public class fPrincipal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        bZombies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/zombie2.png"))); // NOI18N
+        bZombies.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Zombies/zombie2.png"))); // NOI18N
         bZombies.setContentAreaFilled(false);
         bZombies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +70,7 @@ public class fPrincipal extends javax.swing.JFrame {
         getContentPane().add(bZombies);
         bZombies.setBounds(280, 250, 52, 89);
 
-        bPlantas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planta1.png"))); // NOI18N
+        bPlantas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Plantas/planta1.png"))); // NOI18N
         bPlantas.setContentAreaFilled(false);
         bPlantas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +150,7 @@ public class fPrincipal extends javax.swing.JFrame {
             int y = Integer.parseInt(tfY.getText());
             if(0 < x && x <= 10 && 0 < y && y <= 10)
             {
+                escenario = new fEscenario(x, y);
                 fCatalogoPlantas cp = new fCatalogoPlantas();
                 cp.setVisible(true);
             }

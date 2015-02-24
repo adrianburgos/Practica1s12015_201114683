@@ -154,6 +154,7 @@ public class fJugadores extends javax.swing.JFrame {
                     }
                 }
             }
+            this.setVisible(false);
         }
         catch(Exception e)
         {

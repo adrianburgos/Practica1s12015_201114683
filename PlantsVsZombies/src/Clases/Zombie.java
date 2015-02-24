@@ -5,11 +5,13 @@
  */
 package Clases;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Adrian
  */
-public class Zombie {
+public class Zombie extends JLabel implements Runnable {
     private String imagen;
     private String nombre;
     private int ataque;
@@ -81,4 +83,9 @@ public class Zombie {
     public void setY(int y) {
         this.y = y;
     }     
+
+    @Override
+    public void run() {
+        
+    }
 }
