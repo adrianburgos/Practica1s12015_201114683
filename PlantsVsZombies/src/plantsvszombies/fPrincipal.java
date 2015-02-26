@@ -5,7 +5,10 @@
  */
 package plantsvszombies;
 
+import Clases.Nodos.Planta;
+import Clases.Nodos.Zombie;
 import Clases.*;
+import Clases.Estructuras.ListaPlanta;
 import java.net.URL;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
@@ -22,7 +25,7 @@ public class fPrincipal extends javax.swing.JFrame {
     
     public fJugadores jugadores = null;
     public static LinkedList<LinkedList> Jugadores = new LinkedList<LinkedList>();
-    public static LinkedList<Planta> catalogoPlantas = new LinkedList<Planta>();
+    public static ListaPlanta catalogoPlantas = new ListaPlanta();
     public static LinkedList<Zombie> catalogoZombies = new LinkedList<Zombie>();
     public static fEscenario escenario = null;
     public fPrincipal() {

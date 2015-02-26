@@ -5,13 +5,16 @@
  */
 package plantsvszombies;
 
-import Clases.Planta;
-import Clases.Zombie;
+import Clases.Nodos.Planta;
+import Clases.Nodos.Zombie;
 import java.net.URL;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import static plantsvszombies.fEscenario.pPlantas;
+import plantsvszombies.fEscenario;
 
 /**
  *
@@ -150,27 +153,32 @@ public class fCatalogoZombies extends javax.swing.JFrame {
             System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
                     + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
         }
+        this.setVisible(false);
         fPrincipal.escenario.setVisible(true);
         int n = fPrincipal.catalogoPlantas.size();
         int m = fPrincipal.catalogoZombies.size();
         for(int j = 0; j<5; j++)
         {
             int posP = (int) (Math.random()*100)%n;
-            int posZ = (int) (Math.random()*100)%m;
             fEscenario.plantas.add(fPrincipal.catalogoPlantas.get(posP));
-            fEscenario.zombies.push(fPrincipal.catalogoZombies.get(posZ));
             Planta p = fPrincipal.catalogoPlantas.get(posP);
-            Zombie z = fPrincipal.catalogoZombies.get(posZ);
             JLabel tp = new JLabel(new ImageIcon(p.getImagen()));
-            JLabel tz = new JLabel(new ImageIcon(z.getImagen()));
             tp.setBounds(10, tamy*j + 10, tamx, tamy);
-            tz.setBounds(10, tamy*j + 10, tamx, tamy);
             fEscenario.pPlantas.add(tp);
-            fEscenario.pZombies.add(tz);
             fEscenario.pPlantas.repaint();
+            
+            
+            int posZ = (int) (Math.random()*100)%m;
+            fEscenario.zombies.push(fPrincipal.catalogoZombies.get(posZ));
+            Zombie z = fPrincipal.catalogoZombies.get(posZ);
+            JLabel tz = new JLabel(new ImageIcon(z.getImagen()));
+            tz.setBounds(10, tamy*j + 10, tamx, tamy);
+            fEscenario.pZombies.add(tz);
             fEscenario.pZombies.repaint();
+            
         }
-        this.setVisible(false);
+        Thread timer = new Thread(fPrincipal.escenario);
+        timer.start();
     }//GEN-LAST:event_bFinalizarActionPerformed
 
     private void bExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExtraActionPerformed

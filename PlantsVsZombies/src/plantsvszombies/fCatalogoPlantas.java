@@ -5,7 +5,7 @@
  */
 package plantsvszombies;
 
-import Clases.Planta;
+import Clases.Nodos.Planta;
 import java.net.URL;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
@@ -144,16 +144,17 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
 
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
         System.out.println("Catalogo Plantas:\n");
-        Iterator i = fPrincipal.catalogoPlantas.iterator();
-        while (i.hasNext())
-        {
-            Planta t = (Planta) i.next();
-            System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
-                    + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
-        }
+//        Iterator i = fPrincipal.catalogoPlantas.iterator();
+//        while (i.hasNext())
+//        {
+//            Planta t = (Planta) i.next();
+//            System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
+//                    + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
+//        }
         fCatalogoZombies cz = new fCatalogoZombies();
         cz.setVisible(true);
         this.setVisible(false);
+        System.out.println(fPrincipal.catalogoPlantas.graficaCatalogPlantas());
     }//GEN-LAST:event_bFinalizarActionPerformed
 
     private void bExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExtraActionPerformed
