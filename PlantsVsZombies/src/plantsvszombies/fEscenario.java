@@ -175,6 +175,8 @@ public class fEscenario extends javax.swing.JFrame implements Runnable{
             s = s + fPrincipal.catalogoZombies.graficaCatalogoZombies();
             s += "}";
             FileWriter fw = new FileWriter("C:\\Users\\Adrian\\Desktop\\Catalogos.txt");
+            // cd C:\Program Files\Graphviz2.38\bin
+            // dot.exe -Tjpg C:\Users\Adrian\Desktop\Catalogos.txt -o C:\Users\Adrian\Desktop\Catalogos.jpg
             PrintWriter pw = new PrintWriter(fw);
             pw.println(s);
             pw.close();
