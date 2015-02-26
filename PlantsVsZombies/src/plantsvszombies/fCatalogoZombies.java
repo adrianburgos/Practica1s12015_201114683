@@ -146,13 +146,13 @@ public class fCatalogoZombies extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
-        Iterator i = fPrincipal.catalogoZombies.iterator();
-        while (i.hasNext())
-        {
-            Zombie t = (Zombie) i.next();
-            System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
-                    + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
-        }
+//        Iterator i = fPrincipal.catalogoZombies.iterator();
+//        while (i.hasNext())
+//        {
+//            Zombie t = (Zombie) i.next();
+//            System.out.println("\tImagen: " + t.getImagen() + "\n\tNombre: " + t.getNombre() + "\n\tVida: "
+//                    + t.getVida() + "\n\tAtaque: " + t.getAtaque() + "\n\tTipo de Ataque: " + t.getTipo()+ "\n");
+//        }
         this.setVisible(false);
         fPrincipal.escenario.setVisible(true);
         int n = fPrincipal.catalogoPlantas.size();

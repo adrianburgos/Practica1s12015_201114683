@@ -76,7 +76,7 @@ public class ListaPlanta {
         }
         return tam;
     }    
-    public String graficaCatalogPlantas()
+    public String graficaCatalogoPlantas()
     {
         int cantNodos = 1;
         String archivo="digraph G\n{\n";
@@ -98,7 +98,7 @@ public class ListaPlanta {
             cantNodos++;
             t = t.siguiente;
         }
-        archivo = archivo + "}";
+        //archivo = archivo + "}";
         return archivo;
     }
 }

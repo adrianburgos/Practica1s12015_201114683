@@ -8,6 +8,9 @@ package plantsvszombies;
 import Clases.Campo;
 import Clases.Nodos.Planta;
 import Clases.Nodos.Zombie;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -106,6 +109,7 @@ public class fEscenario extends javax.swing.JFrame implements Runnable{
         pPlantas = new javax.swing.JPanel();
         pTablero = new javax.swing.JPanel();
         pZombies = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -150,9 +154,37 @@ public class fEscenario extends javax.swing.JFrame implements Runnable{
         getContentPane().add(pZombies);
         pZombies.setBounds(650, 10, 102, 540);
 
-        setSize(new java.awt.Dimension(784, 598));
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(10, 560, 740, 40);
+
+        setSize(new java.awt.Dimension(784, 643));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try
+        {
+            String s = "digraph G\n{\n";
+            s = fPrincipal.catalogoPlantas.graficaCatalogoPlantas();
+            s = s + fPrincipal.catalogoZombies.graficaCatalogoZombies();
+            s += "}";
+            FileWriter fw = new FileWriter("C:\\Users\\Adrian\\Desktop\\Catalogos.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println(s);
+            pw.close();
+            fw.close();
+            System.out.println(s);
+        }
+        catch (IOException ex)
+        {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +221,7 @@ public class fEscenario extends javax.swing.JFrame implements Runnable{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     public static javax.swing.JPanel pPlantas;
     public static javax.swing.JPanel pTablero;
     public static javax.swing.JPanel pZombies;

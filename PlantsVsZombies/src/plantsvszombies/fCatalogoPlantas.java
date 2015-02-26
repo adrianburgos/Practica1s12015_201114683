@@ -6,8 +6,13 @@
 package plantsvszombies;
 
 import Clases.Nodos.Planta;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -154,7 +159,6 @@ public class fCatalogoPlantas extends javax.swing.JFrame {
         fCatalogoZombies cz = new fCatalogoZombies();
         cz.setVisible(true);
         this.setVisible(false);
-        System.out.println(fPrincipal.catalogoPlantas.graficaCatalogPlantas());
     }//GEN-LAST:event_bFinalizarActionPerformed
 
     private void bExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExtraActionPerformed

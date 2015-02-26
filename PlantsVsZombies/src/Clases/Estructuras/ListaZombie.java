@@ -72,5 +72,30 @@ public class ListaZombie {
         return tam;
     } 
     
+    public String graficaCatalogoZombies()
+    {
+        int cantNodos = 100;
+        String archivo="";
+        Zombie t = inicio;
+        while(t != null)
+        {
+            archivo = archivo + "node" + cantNodos + " [label = \"" +t.getNombre() + "\"];\n";
+            t = t.siguiente;
+            cantNodos++;
+        }
+        t = inicio;
+        cantNodos = 100;
+        while(t != null)
+        {
+            if(t.siguiente!=null)
+            {
+                archivo = archivo + "node" + cantNodos + " -> " + "node" + (cantNodos + 1) + ";\n";
+            }
+            cantNodos++;
+            t = t.siguiente;
+        }
+        //archivo = archivo + "}";
+        return archivo;
+    }
     
 }

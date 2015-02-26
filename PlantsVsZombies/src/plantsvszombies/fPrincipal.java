@@ -9,6 +9,7 @@ import Clases.Nodos.Planta;
 import Clases.Nodos.Zombie;
 import Clases.*;
 import Clases.Estructuras.ListaPlanta;
+import Clases.Estructuras.ListaZombie;
 import java.net.URL;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
@@ -26,7 +27,7 @@ public class fPrincipal extends javax.swing.JFrame {
     public fJugadores jugadores = null;
     public static LinkedList<LinkedList> Jugadores = new LinkedList<LinkedList>();
     public static ListaPlanta catalogoPlantas = new ListaPlanta();
-    public static LinkedList<Zombie> catalogoZombies = new LinkedList<Zombie>();
+    public static ListaZombie catalogoZombies = new ListaZombie();
     public static fEscenario escenario = null;
     public fPrincipal() {
         initComponents();
